@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ArsStat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="head1" translatesAutoresizingMaskIntoConstraints="NO" id="X3j-LR-Mn6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="185" id="55o-Rj-FA7"/>
+                                    <constraint firstAttribute="height" constant="128" id="R8H-YU-X6V"/>
+                                    <constraint firstAttribute="width" constant="230" id="b18-YP-CNc"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="370" id="koB-AW-KcE"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="370" id="qOI-4r-yPp"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="340" id="zm9-eG-jyD"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7v-VQ-4PD">
+                                <rect key="frame" x="0.0" y="592" width="375" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="GO!" image="buttonGo"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.15610209922506324" blue="0.20124902601775496" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="X3j-LR-Mn6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3wz-5O-QnW"/>
+                            <constraint firstAttribute="trailing" secondItem="X3j-LR-Mn6" secondAttribute="trailing" id="LSx-Id-bhE"/>
+                            <constraint firstItem="X3j-LR-Mn6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RiW-BZ-tQr"/>
+                            <constraint firstItem="X3j-LR-Mn6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ut6-Cl-5W1"/>
+                            <constraint firstAttribute="trailing" secondItem="X3j-LR-Mn6" secondAttribute="trailing" id="bbI-rx-Boi"/>
+                            <constraint firstItem="X3j-LR-Mn6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cQ6-lS-iA6"/>
+                            <constraint firstItem="X3j-LR-Mn6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pY6-aW-VSn"/>
+                            <constraint firstItem="X3j-LR-Mn6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rLp-Ud-dJd"/>
+                            <constraint firstItem="X3j-LR-Mn6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="z4h-jW-xhK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="O8B-h6-Mes">
+            <objects>
+                <viewController id="JOq-wP-fja" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qPy-fm-c3H"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Du-UJ-SuU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="07Q-eY-DxT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bellerin" translatesAutoresizingMaskIntoConstraints="NO" id="8y5-zI-UW3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.15610209920000001" blue="0.201249026" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eni-MH-UTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="864.79999999999995" y="122.78860569715144"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bellerin" width="794" height="500"/>
+        <image name="buttonGo" width="1340" height="284"/>
+        <image name="head1" width="1440" height="720"/>
+    </resources>
+</document>
