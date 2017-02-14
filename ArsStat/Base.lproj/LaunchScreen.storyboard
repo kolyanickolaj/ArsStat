@@ -21,12 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="H6a-3i-6rZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="H6a-3i-6rZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="H6a-3i-6rZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Ovd-ur-1AA"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="H6a-3i-6rZ" secondAttribute="bottom" id="WS7-u9-Qu0"/>
+                            <constraint firstItem="H6a-3i-6rZ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="h58-Eo-v3I"/>
+                            <constraint firstAttribute="trailing" secondItem="H6a-3i-6rZ" secondAttribute="trailing" id="jOb-YI-M3H"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
