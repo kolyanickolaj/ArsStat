@@ -7,8 +7,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     private var indexCompetition = 0
     private var indexSeason = 0
     
+    @IBOutlet weak var playerLabel: UILabel!
+    @IBOutlet weak var competitionLabel: UILabel!
+    @IBOutlet weak var seasonLabel: UILabel!
+    
     @IBOutlet weak var textPlayerPicker: UITextField!
-    @IBOutlet weak var textCompetitionPicker: UITextView!
+    @IBOutlet weak var textCompetitionPicker: UITextField!
     @IBOutlet weak var textSeasonPicker: UITextField!
         
     private var playerPicker = UIPickerView()
@@ -18,9 +22,47 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var goButton: UIButton!
     
+    var language = "ENG"
+    
+    @IBAction func changeLanguage(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            playerLabel.text = "Player"
+            textCompetitionPicker.text = engCompetitions[indexCompetition]
+            competitionLabel.text = "Competition"
+            seasonLabel.text = "Season"
+            language = "ENG"
+        } else {
+            playerLabel.text = "Игрок"
+            textCompetitionPicker.text = rusCompetitions[indexCompetition]
+            competitionLabel.text = "Соревнование"
+            seasonLabel.text = "Сезон"
+            language = "RUS"
+        }
+    }
+    
+    
+    
+    
+//    @IBAction func changeLanguage(_ sender: UISegmentedControl) {
+//        if sender.selectedSegmentIndex == 0 {
+//            playerLabel.text = "Player"
+//            textCompetitionPicker.text = engCompetitions[indexCompetition]
+//            competitionLabel.text = "Competition"
+//            seasonLabel.text = "Season"
+//            language = "ENG"
+//        } else {
+//            playerLabel.text = "Игрок"
+//            textCompetitionPicker.text = rusCompetitions[indexCompetition]
+//            competitionLabel.text = "Соревнование"
+//            seasonLabel.text = "Сезон"
+//            language = "RUS"
+//        }
+//
+//    }
     let names = ["Alexis Sanchez", "Olivier Giroud", "Danny Welbeck", "Theo Walcott", "Lucas Perez", "Alex Iwobi", "Aaron Ramsey", "Mesut Ozil", "Santi Cazorla", "Alex Oxlade-Chamberlain", "Granit Xhaka", "Francis Coquelin", "Mohamed Elneny", "Jeff Reine-Adelaide", "Laurent Koscielny", "Shkodran Mustafi", "Hector Bellerin", "Nacho Monreal", "Kieran Gibbs", "Mathieu Debuchy", "Gabriel", "Carl Jenkinson", "Per Mertesacker", "Rob Holding", "Petr Cech", "David Ospina", "Emiliano Martinez"]
     
-    let competitions = ["All competitions", "Premier League", "Champions League", "FA Cup", "EFL Cup"]
+    let engCompetitions = ["All competitions", "Premier League", "Champions League", "FA Cup", "EFL Cup"]
+    let rusCompetitions = ["Все соревнования", "Премьер Лига", "Лига Чемпионов", "Кубок Англии", "Кубок Английской Лиги"]
     
     let seasons = ["2016-2017", "2015-2016", "2014-2015"]
     
@@ -40,10 +82,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         competitionPicker.dataSource = self
         competitionPicker.delegate = self
-        textCompetitionPicker.text = competitions[indexCompetition]
         textCompetitionPicker.textColor = UIColor.white
         textCompetitionPicker.inputView = competitionPicker
-        
+        if language == "ENG" {
+            textCompetitionPicker.text = engCompetitions[indexCompetition]
+        } else { textCompetitionPicker.text = rusCompetitions[indexCompetition] }
+
         seasonPicker.dataSource = self
         seasonPicker.delegate = self
         textSeasonPicker.text = seasons[indexSeason]
@@ -51,11 +95,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         textSeasonPicker.inputView = seasonPicker
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.navigationBar.isHidden = true
-        
     }
     
     override func performSelector(inBackground aSelector: Selector, with arg: Any?) {
@@ -73,7 +116,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         if pickerView == playerPicker {
             numOfRows = names.count
         } else if pickerView == competitionPicker {
-            numOfRows = competitions.count
+            numOfRows = engCompetitions.count
         } else if pickerView == seasonPicker {
             numOfRows = seasons.count
         }
@@ -84,8 +127,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         var titForRow = ""
         if pickerView == playerPicker {
             titForRow = names[row]
+        } else if pickerView == competitionPicker && language == "ENG" {
+            titForRow = engCompetitions[row]
         } else if pickerView == competitionPicker {
-            titForRow = competitions[row]
+            titForRow = rusCompetitions[row]
         } else if pickerView == seasonPicker {
             titForRow = seasons[row]
         }
@@ -96,9 +141,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         if pickerView == playerPicker {
             indexPlayer = row
             textPlayerPicker.text = names[indexPlayer]
-        } else if pickerView == competitionPicker {
+        } else if pickerView == competitionPicker && language == "ENG" {
             indexCompetition = row
-            textCompetitionPicker.text = competitions[indexCompetition]
+            textCompetitionPicker.text = engCompetitions[indexCompetition]
+        } else if pickerView == competitionPicker  {
+            indexCompetition = row
+            textCompetitionPicker.text = rusCompetitions[indexCompetition]
         } else if pickerView == seasonPicker {
             indexSeason = row
             textSeasonPicker.text = seasons[indexSeason]
@@ -107,9 +155,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? ResultViewController
-        destination?.imageName = names[indexPlayer]
+        let resultDestination = segue.destination as? ResultViewController
+        resultDestination?.imageName = names[indexPlayer]
+        resultDestination?.language = language
+        
+        let infoDestination = segue.destination as? InfoShowViewController
+        infoDestination?.language = language
+        
     }
+    
+
+
 }
 
 
