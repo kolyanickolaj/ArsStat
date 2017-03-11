@@ -40,35 +40,20 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
+    private let names = ["Alexis Sanchez", "Olivier Giroud", "Danny Welbeck", "Theo Walcott", "Lucas Perez", "Alex Iwobi", "Aaron Ramsey", "Mesut Ozil", "Santi Cazorla", "Alex Oxlade-Chamberlain", "Granit Xhaka", "Francis Coquelin", "Mohamed Elneny", "Jeff Reine-Adelaide", "Laurent Koscielny", "Shkodran Mustafi", "Hector Bellerin", "Nacho Monreal", "Kieran Gibbs", "Mathieu Debuchy", "Gabriel", "Carl Jenkinson", "Per Mertesacker", "Rob Holding", "Petr Cech", "David Ospina", "Emiliano Martinez"]
     
+    private let engCompetitions = ["All competitions", "Premier League", "Champions League", "FA Cup", "EFL Cup"]
+    private let rusCompetitions = ["Все соревнования", "Премьер Лига", "Лига Чемпионов", "Кубок Англии", "Кубок Англ. Лиги"]
     
-    
-//    @IBAction func changeLanguage(_ sender: UISegmentedControl) {
-//        if sender.selectedSegmentIndex == 0 {
-//            playerLabel.text = "Player"
-//            textCompetitionPicker.text = engCompetitions[indexCompetition]
-//            competitionLabel.text = "Competition"
-//            seasonLabel.text = "Season"
-//            language = "ENG"
-//        } else {
-//            playerLabel.text = "Игрок"
-//            textCompetitionPicker.text = rusCompetitions[indexCompetition]
-//            competitionLabel.text = "Соревнование"
-//            seasonLabel.text = "Сезон"
-//            language = "RUS"
-//        }
-//
-//    }
-    let names = ["Alexis Sanchez", "Olivier Giroud", "Danny Welbeck", "Theo Walcott", "Lucas Perez", "Alex Iwobi", "Aaron Ramsey", "Mesut Ozil", "Santi Cazorla", "Alex Oxlade-Chamberlain", "Granit Xhaka", "Francis Coquelin", "Mohamed Elneny", "Jeff Reine-Adelaide", "Laurent Koscielny", "Shkodran Mustafi", "Hector Bellerin", "Nacho Monreal", "Kieran Gibbs", "Mathieu Debuchy", "Gabriel", "Carl Jenkinson", "Per Mertesacker", "Rob Holding", "Petr Cech", "David Ospina", "Emiliano Martinez"]
-    
-    let engCompetitions = ["All competitions", "Premier League", "Champions League", "FA Cup", "EFL Cup"]
-    let rusCompetitions = ["Все соревнования", "Премьер Лига", "Лига Чемпионов", "Кубок Англии", "Кубок Английской Лиги"]
-    
-    let seasons = ["2016-2017", "2015-2016", "2014-2015"]
+    private let seasons = ["2016-2017", "2015-2016", "2014-2015"]
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         super.touchesBegan(touches, with: event)
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     override func viewDidLoad() {
@@ -94,17 +79,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         textSeasonPicker.textColor = UIColor.white
         textSeasonPicker.inputView = seasonPicker
         
+//        fetchData()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func performSelector(inBackground aSelector: Selector, with arg: Any?) {
-        playerPicker.showsSelectionIndicator = true
-        competitionPicker.showsSelectionIndicator = true
-        seasonPicker.showsSelectionIndicator = true
+        goButton.layer.borderWidth = 1
+        goButton.layer.borderColor = UIColor.white.cgColor
+        goButton.layer.cornerRadius = 10
+        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

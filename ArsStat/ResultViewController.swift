@@ -19,6 +19,10 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     let engData = ["Matches played", "Goals", "Assists", "Yellow cards", "Red cards"]
     let rusData = ["Сыграно матчей", "Голы", "Голевые пасы", "Желтые карточки", "Красные карточки"]
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return engData.count
     }
@@ -45,5 +49,22 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
             weightLabel.text = "Вес:"
         }
     }
+    
+    func loadStatDataAndUpdateUI() {
+        let player = "sr:player:1053"
+        DataDownloader.sharedInstance.fetchData(player: player, completion: {(statData) in
+            self.updateUI(statData) } )
+    }
+    
+    func updateUI(_ statData: StatData) {
+        heightLabel.text = String(describing: statData.height)
+        weightLabel.text = String(describing: statData.weight)
+    }
 
-  }
+    
+    
+    
+    
+    
+
+}
