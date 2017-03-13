@@ -30,7 +30,6 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "statCell", for: indexPath) as! ShowTableViewCell
         cell.parameterLabel.text = parameters[indexPath.row]
-        cell.parameterLabel.text = results[indexPath.row]
         cell.selectionStyle = .none
         tableView.rowHeight = (tableView.frame.maxY - tableView.frame.minY) / CGFloat(parameters.count)
         
@@ -44,6 +43,7 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         weightLabel.text = "Weight:"
         DataDownloader.sharedInstance.fetchData(player: playerID, tournamentID: tournamentID, completion: {(statData) in
             self.updateUI(statData) } )
+        
 
     }
     
@@ -52,6 +52,7 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         results = [String(statData.matchesPlayed!), String(statData.goals!), String(statData.assists!), String(statData.yellowCards!), String(statData.redCards!)]
         heightValueLabel.text = String(statData.height!)
         weightValueLabel.text = String(statData.weight!)
+        
     }
 
     
