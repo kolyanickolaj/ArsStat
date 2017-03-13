@@ -30,24 +30,25 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         super.touchesBegan(touches, with: event)
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         playerPicker.dataSource = self
         playerPicker.delegate = self
-        textPlayerPicker.textColor = UIColor.white
         textPlayerPicker.inputView = playerPicker
         textPlayerPicker.text = "Player"
         
         competitionPicker.dataSource = self
         competitionPicker.delegate = self
-        textCompetitionPicker.textColor = UIColor.white
         textCompetitionPicker.inputView = competitionPicker
         textCompetitionPicker.text = "Tournament"
 
         seasonPicker.dataSource = self
         seasonPicker.delegate = self
-        textSeasonPicker.textColor = UIColor.white
         textSeasonPicker.inputView = seasonPicker
         textSeasonPicker.text = "Season"
         
