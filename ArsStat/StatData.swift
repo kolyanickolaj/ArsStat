@@ -17,3 +17,4 @@ struct StatData {
     var yellowCards:Int?
     var redCards:Int?
 }
+

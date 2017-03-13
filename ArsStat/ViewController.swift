@@ -7,10 +7,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     private var indexCompetition = 0
     private var indexSeason = 0
     
-    @IBOutlet weak var playerLabel: UILabel!
-    @IBOutlet weak var competitionLabel: UILabel!
-    @IBOutlet weak var seasonLabel: UILabel!
-    
     @IBOutlet weak var textPlayerPicker: UITextField!
     @IBOutlet weak var textCompetitionPicker: UITextField!
     @IBOutlet weak var textSeasonPicker: UITextField!
@@ -22,38 +18,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var goButton: UIButton!
     
-    var language = "ENG"
+    private let teamPlayers = ["Alexis Sanchez":"sr:player:34120", "Olivier Giroud":"sr:player:39070", "Danny Welbeck":"sr:player:33902", "Theo Walcott":"sr:player:10501", "Lucas Perez":"sr:player:107128", "Alex Iwobi":"sr:player:352770", "Aaron Ramsey":"sr:player:23571", "Mesut Ozil":"sr:player:16176", "Santi Cazorla":"sr:player:17651", "Alex Oxlade-Chamberlain":"sr:player:10577", "Granit Xhaka":"sr:player:117777", "Francis Coquelin":"sr:player:40672", "Mohamed Elneny":"sr:player:159675", "Jeff Reine-Adelaide":"sr:player:819262", "Laurent Koscielny":"sr:player:51340", "Shkodran Mustafi":"sr:player:89894", "Hector Bellerin":"sr:player:188365", "Nacho Monreal":"sr:player:17088", "Kieran Gibbs":"sr:player:24814", "Mathieu Debuchy":"sr:player:3579", "Gabriel":"sr:player:124737", "Carl Jenkinson":"sr:player:137844", "Per Mertesacker":"sr:player:369", "Rob Holding":"sr:player:821198", "Petr Cech":"sr:player:1185", "David Ospina":"sr:player:33596", "Emiliano Martinez":"sr:player:158263"]
     
-    @IBAction func changeLanguage(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            playerLabel.text = "Player"
-            textCompetitionPicker.text = engCompetitions[indexCompetition]
-            competitionLabel.text = "Competition"
-            seasonLabel.text = "Season"
-            language = "ENG"
-        } else {
-            playerLabel.text = "Игрок"
-            textCompetitionPicker.text = rusCompetitions[indexCompetition]
-            competitionLabel.text = "Соревнование"
-            seasonLabel.text = "Сезон"
-            language = "RUS"
-        }
-    }
+    private let teamTournaments = ["Premier League", "Champions League", "FA Cup", "EFL Cup"]
+    private let seasons = ["2016-2017", "2015-2016"]
     
-    private let names = ["Alexis Sanchez", "Olivier Giroud", "Danny Welbeck", "Theo Walcott", "Lucas Perez", "Alex Iwobi", "Aaron Ramsey", "Mesut Ozil", "Santi Cazorla", "Alex Oxlade-Chamberlain", "Granit Xhaka", "Francis Coquelin", "Mohamed Elneny", "Jeff Reine-Adelaide", "Laurent Koscielny", "Shkodran Mustafi", "Hector Bellerin", "Nacho Monreal", "Kieran Gibbs", "Mathieu Debuchy", "Gabriel", "Carl Jenkinson", "Per Mertesacker", "Rob Holding", "Petr Cech", "David Ospina", "Emiliano Martinez"]
-    
-    private let engCompetitions = ["All competitions", "Premier League", "Champions League", "FA Cup", "EFL Cup"]
-    private let rusCompetitions = ["Все соревнования", "Премьер Лига", "Лига Чемпионов", "Кубок Англии", "Кубок Англ. Лиги"]
-    
-    private let seasons = ["2016-2017", "2015-2016", "2014-2015"]
+    let tournaments = ["Premier League2016-2017":"sr:season:32887", "Champions League2016-2017":"sr:season:33051", "FA Cup2016-2017":"sr:season:35800", "EFL Cup2016-2017":"sr:season:33095", "Premier League2015-2016":"sr:season:10412", "Champions League2015-2016":"sr:season:10484", "FA Cup2015-2016":"sr:season:11904", "EFL Cup2015-2016":"sr:season:10404"]
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         super.touchesBegan(touches, with: event)
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
     
     override func viewDidLoad() {
@@ -61,27 +35,23 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         playerPicker.dataSource = self
         playerPicker.delegate = self
-        textPlayerPicker.text = names[indexPlayer]
         textPlayerPicker.textColor = UIColor.white
         textPlayerPicker.inputView = playerPicker
+        textPlayerPicker.text = "Player"
         
         competitionPicker.dataSource = self
         competitionPicker.delegate = self
         textCompetitionPicker.textColor = UIColor.white
         textCompetitionPicker.inputView = competitionPicker
-        if language == "ENG" {
-            textCompetitionPicker.text = engCompetitions[indexCompetition]
-        } else { textCompetitionPicker.text = rusCompetitions[indexCompetition] }
+        textCompetitionPicker.text = "Tournament"
 
         seasonPicker.dataSource = self
         seasonPicker.delegate = self
-        textSeasonPicker.text = seasons[indexSeason]
         textSeasonPicker.textColor = UIColor.white
         textSeasonPicker.inputView = seasonPicker
+        textSeasonPicker.text = "Season"
         
-//        fetchData()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -89,19 +59,19 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         goButton.layer.borderWidth = 1
         goButton.layer.borderColor = UIColor.white.cgColor
         goButton.layer.cornerRadius = 10
-        
     }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
                 return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         var numOfRows = 0
+        let names = [String](teamPlayers.keys)
         if pickerView == playerPicker {
             numOfRows = names.count
         } else if pickerView == competitionPicker {
-            numOfRows = engCompetitions.count
+            numOfRows = teamTournaments.count
         } else if pickerView == seasonPicker {
             numOfRows = seasons.count
         }
@@ -110,12 +80,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var titForRow = ""
+        let names = [String](teamPlayers.keys)
         if pickerView == playerPicker {
             titForRow = names[row]
-        } else if pickerView == competitionPicker && language == "ENG" {
-            titForRow = engCompetitions[row]
         } else if pickerView == competitionPicker {
-            titForRow = rusCompetitions[row]
+            titForRow = teamTournaments[row]
         } else if pickerView == seasonPicker {
             titForRow = seasons[row]
         }
@@ -123,15 +92,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let names = [String](teamPlayers.keys)
         if pickerView == playerPicker {
             indexPlayer = row
             textPlayerPicker.text = names[indexPlayer]
-        } else if pickerView == competitionPicker && language == "ENG" {
+        } else if pickerView == competitionPicker {
             indexCompetition = row
-            textCompetitionPicker.text = engCompetitions[indexCompetition]
-        } else if pickerView == competitionPicker  {
-            indexCompetition = row
-            textCompetitionPicker.text = rusCompetitions[indexCompetition]
+            textCompetitionPicker.text = teamTournaments[indexCompetition]
         } else if pickerView == seasonPicker {
             indexSeason = row
             textSeasonPicker.text = seasons[indexSeason]
@@ -140,14 +107,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let names = [String](teamPlayers.keys)
         let resultDestination = segue.destination as? ResultViewController
         resultDestination?.imageName = names[indexPlayer]
-        resultDestination?.language = language
+        if let playerID = teamPlayers[names[indexPlayer]] {
+            resultDestination?.playerID = playerID
+        }
+        if let tournamentID = tournaments[teamTournaments[indexCompetition]+seasons[indexSeason]] {
+            resultDestination?.tournamentID = tournamentID
+        }
         
-        let infoDestination = segue.destination as? InfoShowViewController
-        infoDestination?.language = language
-        
-    }
+        }
     
 
 
