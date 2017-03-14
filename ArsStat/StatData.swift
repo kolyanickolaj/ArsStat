@@ -17,4 +17,6 @@ struct StatData {
     var yellowCards:Int?
     var redCards:Int?
 }
-
+struct PlayersData {
+    var players = [String:String]()
+}

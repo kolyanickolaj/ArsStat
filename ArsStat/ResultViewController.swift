@@ -3,12 +3,11 @@ import UIKit
 
 class ResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var imageName: String!
+    var imageName:String!
     var playerID:String!
     var tournamentID:String!
     
     let parameters = ["Matches played", "Goals", "Assists", "Yellow cards", "Red cards"]
-    var results = ["a", "b", "c", "d", "e"]
     
     @IBOutlet weak var playerImage: UIImageView!
     
@@ -34,7 +33,7 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "statCell", for: indexPath) as! ShowTableViewCell
         cell.parameterLabel.text = parameters[indexPath.row]
-//        cell.resultLabel.text = results[indexPath.row]
+        cell.resultLabel.text = "0"
         cell.selectionStyle = .none
         tableView.rowHeight = (tableView.frame.maxY - tableView.frame.minY) / CGFloat(parameters.count)
         
@@ -43,21 +42,34 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIImage(named: imageName) != nil {
         playerImage.image = UIImage(named: imageName)
+        } else { playerImage.image = UIImage(named: "defaultPlayerImage") }
+    
         heightLabel.text = "Height:"
+        heightValueLabel.text = "0"
         weightLabel.text = "Weight:"
+        weightValueLabel.text = "0"
+        
         DataDownloader.sharedInstance.fetchData(player: playerID, tournamentID: tournamentID, completion: {(statData) in
             self.updateUI(statData) } )
-        
-
     }
     
     func updateUI(_ statData: StatData) {
-        //results = [String(statData.matchesPlayed!), String(statData.goals!), String(statData.assists!), String(statData.yellowCards!), String(statData.redCards!)]
-        heightValueLabel.text = String(statData.height!)
-        weightValueLabel.text = String(statData.weight!)
-        let cell = statTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? ShowTableViewCell
-        cell?.resultLabel.text = String(statData.matchesPlayed!)
+        let results = [String(statData.matchesPlayed!), String(statData.goals!), String(statData.assists!), String(statData.yellowCards!), String(statData.redCards!)]
+        if statData.height != nil {
+            heightValueLabel.text! = String(statData.height!)
+        } else { heightValueLabel.text! = "0" }
+        if statData.weight != nil {
+            weightValueLabel.text! = String(statData.weight!)
+        } else { weightValueLabel.text = "0" }
+        
+        for item in 0..<results.count {
+        let cell = statTableView.cellForRow(at: IndexPath(item: item, section: 0)) as? ShowTableViewCell
+        cell?.resultLabel.text = results[item]
+        
+        }
         
     }
 

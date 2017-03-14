@@ -18,8 +18,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var goButton: UIButton!
     
-    private let teamPlayers = ["Alexis Sanchez":"sr:player:34120", "Olivier Giroud":"sr:player:39070", "Danny Welbeck":"sr:player:33902", "Theo Walcott":"sr:player:10501", "Lucas Perez":"sr:player:107128", "Alex Iwobi":"sr:player:352770", "Aaron Ramsey":"sr:player:23571", "Mesut Ozil":"sr:player:16176", "Santi Cazorla":"sr:player:17651", "Alex Oxlade-Chamberlain":"sr:player:10577", "Granit Xhaka":"sr:player:117777", "Francis Coquelin":"sr:player:40672", "Mohamed Elneny":"sr:player:159675", "Jeff Reine-Adelaide":"sr:player:819262", "Laurent Koscielny":"sr:player:51340", "Shkodran Mustafi":"sr:player:89894", "Hector Bellerin":"sr:player:188365", "Nacho Monreal":"sr:player:17088", "Kieran Gibbs":"sr:player:24814", "Mathieu Debuchy":"sr:player:3579", "Gabriel":"sr:player:124737", "Carl Jenkinson":"sr:player:137844", "Per Mertesacker":"sr:player:369", "Rob Holding":"sr:player:821198", "Petr Cech":"sr:player:1185", "David Ospina":"sr:player:33596", "Emiliano Martinez":"sr:player:158263"]
-    
+    private var teamPlayers = [String:String]()
     private let teamTournaments = ["Premier League", "Champions League", "FA Cup", "EFL Cup"]
     private let seasons = ["2016-2017", "2015-2016"]
     
@@ -52,15 +51,35 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         textSeasonPicker.inputView = seasonPicker
         textSeasonPicker.text = "Season"
         
+        DataDownloader.sharedInstance.fetchPlayers(completion: {(PlayersData) in self.updateUI(PlayersData) } )
+    }
+    
+    func updateUI(_ playersData: PlayersData) {
+        teamPlayers = playersData.players
+        textPlayerPicker.text = playersData.players.keys.first!
+        textCompetitionPicker.text = teamTournaments.first!
+        textSeasonPicker.text = seasons.first!
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        checkReachability()
         navigationController?.navigationBar.isHidden = true
         goButton.layer.borderWidth = 1
         goButton.layer.borderColor = UIColor.white.cgColor
         goButton.layer.cornerRadius = 10
     }
+    
+    func checkReachability(){
+        if currentReachabilityStatus == .notReachable {
+            let alert = UIAlertController(title: "", message: "Check Internet connection", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{ (action) in alert.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
                 return 1
@@ -68,9 +87,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         var numOfRows = 0
-        let names = [String](teamPlayers.keys)
         if pickerView == playerPicker {
-            numOfRows = names.count
+            numOfRows = teamPlayers.count
         } else if pickerView == competitionPicker {
             numOfRows = teamTournaments.count
         } else if pickerView == seasonPicker {
@@ -104,22 +122,24 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             indexSeason = row
             textSeasonPicker.text = seasons[indexSeason]
         }
-  
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let names = [String](teamPlayers.keys)
+        
         let resultDestination = segue.destination as? ResultViewController
-        resultDestination?.imageName = names[indexPlayer]
+        resultDestination?.imageName = teamPlayers[names[indexPlayer]]
+        
         if let playerID = teamPlayers[names[indexPlayer]] {
             resultDestination?.playerID = playerID
         }
+        
         if let tournamentID = tournaments[teamTournaments[indexCompetition]+seasons[indexSeason]] {
             resultDestination?.tournamentID = tournamentID
         }
         
-        }
-    
+    }
 
 
 }

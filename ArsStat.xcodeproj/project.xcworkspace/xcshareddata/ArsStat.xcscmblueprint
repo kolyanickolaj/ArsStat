@@ -1,30 +1,30 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C093F481F22858292739C69F971448660415331B",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B00BC731A4571B1CFE2F2799F5411878DABA5C8E",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "3FAF3CE92C4533E0DE7CF3A935557C2694BECC87" : 9223372036854775807,
-    "C093F481F22858292739C69F971448660415331B" : 9223372036854775807
+    "B00BC731A4571B1CFE2F2799F5411878DABA5C8E" : 9223372036854775807,
+    "BE6F11D2B0F7EBDD3A2A4B2F7B7F7393B556F9B2" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3FCFA4C0-E978-47D4-9B14-0B4867FE050D",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "3FAF3CE92C4533E0DE7CF3A935557C2694BECC87" : "",
-    "C093F481F22858292739C69F971448660415331B" : "LipHW2\/"
+    "B00BC731A4571B1CFE2F2799F5411878DABA5C8E" : "git\/",
+    "BE6F11D2B0F7EBDD3A2A4B2F7B7F7393B556F9B2" : "..\/reachability"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "ArsStat",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ArsStat\/ArsStat.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ArsStat.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kolyanickolaj\/Test2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kolyanickolaj\/ArsStat.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3FAF3CE92C4533E0DE7CF3A935557C2694BECC87"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B00BC731A4571B1CFE2F2799F5411878DABA5C8E"
     },
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kolyanickolaj\/LipHW2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ashleymills\/Reachability.swift.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C093F481F22858292739C69F971448660415331B"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BE6F11D2B0F7EBDD3A2A4B2F7B7F7393B556F9B2"
     }
   ]
 }
