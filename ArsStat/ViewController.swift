@@ -73,12 +73,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func updateTournamentUI(_ tournamentData: TournamentData) {
         playerTournaments = tournamentData.tournaments
-        textCompetitionPicker.text = tournamentData.tournaments.first!
+//        textCompetitionPicker.text = tournamentData.tournaments.first!
     }
     
     func updateSeasonUI(_ seasonData: SeasonData) {
         playerSeasons = seasonData.seasons
-        textSeasonPicker.text = seasonData.seasons.first!
+//        textSeasonPicker.text = seasonData.seasons.first!
     }
     
     override func viewWillAppear(_ animated: Bool) {
