@@ -17,8 +17,8 @@
 		C38FA7AD1E6971E600213D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38FA7AC1E6971E600213D21 /* Assets.xcassets */; };
 		C38FA7B11E6E04A900213D21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38FA7B01E6E04A900213D21 /* Constants.swift */; };
 		C38FA7B31E6E073D00213D21 /* DataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38FA7B21E6E073D00213D21 /* DataDownloader.swift */; };
+		C3C29DFC1E7AF6AC004826CB /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C29DFB1E7AF6AC004826CB /* Reachability.swift */; };
 		C3ECE6431E74535B0066CF21 /* StatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ECE6421E74535B0066CF21 /* StatData.swift */; };
-		C3ECE6471E7866CE0066CF21 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ECE6461E7866CE0066CF21 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +34,8 @@
 		C38FA7AC1E6971E600213D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C38FA7B01E6E04A900213D21 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C38FA7B21E6E073D00213D21 /* DataDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDownloader.swift; sourceTree = "<group>"; };
+		C3C29DFB1E7AF6AC004826CB /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C3ECE6421E74535B0066CF21 /* StatData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatData.swift; sourceTree = "<group>"; };
-		C3ECE6461E7866CE0066CF21 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = ../../../reachability/ReachabilityTest/Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 				C38FA7881E66C07100213D21 /* InfoShowViewController.swift */,
 				C38FA7AC1E6971E600213D21 /* Assets.xcassets */,
 				C33EC0CF1E40DCEC00FD7A2B /* LaunchScreen.storyboard */,
-				C3ECE6461E7866CE0066CF21 /* Reachability.swift */,
+				C3C29DFB1E7AF6AC004826CB /* Reachability.swift */,
 				C33EC0D21E40DCEC00FD7A2B /* Info.plist */,
 			);
 			path = ArsStat;
@@ -163,7 +163,7 @@
 				C33EC0C91E40DCEC00FD7A2B /* ViewController.swift in Sources */,
 				C38FA7891E66C07100213D21 /* InfoShowViewController.swift in Sources */,
 				C33EC0C71E40DCEC00FD7A2B /* AppDelegate.swift in Sources */,
-				C3ECE6471E7866CE0066CF21 /* Reachability.swift in Sources */,
+				C3C29DFC1E7AF6AC004826CB /* Reachability.swift in Sources */,
 				C38FA7B11E6E04A900213D21 /* Constants.swift in Sources */,
 				C38FA7B31E6E073D00213D21 /* DataDownloader.swift in Sources */,
 				C3ECE6431E74535B0066CF21 /* StatData.swift in Sources */,
