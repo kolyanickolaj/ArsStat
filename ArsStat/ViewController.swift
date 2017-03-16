@@ -68,7 +68,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func updateUI(_ playersData: PlayersData) {
         teamPlayers = playersData.players
-        textPlayerPicker.text = playersData.players.keys.first!
+//        textPlayerPicker.text = playersData.players.keys.first!
     }
     
     func updateTournamentUI(_ tournamentData: TournamentData) {

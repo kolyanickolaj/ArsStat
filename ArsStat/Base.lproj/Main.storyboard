@@ -52,7 +52,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="didChangePlayer:" destination="BYZ-38-t0r" eventType="valueChanged" id="Fot-Qp-5lk"/>
                                             <action selector="didChangePlayer:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="OOo-VV-896"/>
                                         </connections>
                                     </textField>
