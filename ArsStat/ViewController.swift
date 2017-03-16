@@ -17,17 +17,18 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var goButton: UIButton!
+    @IBAction func checkInternetConnection(_ sender: UIButton) {
+        checkReachability()
+    }
     
-    private var teamPlayers = [String:String]()
-    private let teamTournaments = ["Premier League", "Champions League", "FA Cup", "EFL Cup"]
-    private let seasons = ["2016-2017", "2015-2016"]
-    
-    let tournaments = ["Premier League2016-2017":"sr:season:32887", "Champions League2016-2017":"sr:season:33051", "FA Cup2016-2017":"sr:season:35800", "EFL Cup2016-2017":"sr:season:33095", "Premier League2015-2016":"sr:season:10412", "Champions League2015-2016":"sr:season:10484", "FA Cup2015-2016":"sr:season:11904", "EFL Cup2015-2016":"sr:season:10404"]
+    private var teamPlayers = ["Alexis Sanches":"sr:player:34120"]
+    private var playerTournaments = ["Premier League"]
+    private var playerSeasons = ["2016-2017"]
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         super.touchesBegan(touches, with: event)
-    }
+        }
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -54,12 +55,30 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         DataDownloader.sharedInstance.fetchPlayers(completion: {(PlayersData) in self.updateUI(PlayersData) } )
     }
     
+    @IBAction func didChangePlayer(_ sender: UITextField) {
+        let names = [String](teamPlayers.keys)
+        DataDownloader.sharedInstance.fetchTournamentData(player: teamPlayers[names[indexPlayer]]!, completion: {(TournamentData) in self.updateTournamentUI(TournamentData) } )
+
+    }
+    
+    @IBAction func didChangeTournament(_ sender: UITextField) {
+        let names = [String](teamPlayers.keys)
+        DataDownloader.sharedInstance.fetchSeasonData(player: teamPlayers[names[indexPlayer]]!, tournament: playerTournaments[indexCompetition], completion: {(SeasonData) in self.updateSeasonUI(SeasonData) } )
+    }
+    
     func updateUI(_ playersData: PlayersData) {
         teamPlayers = playersData.players
         textPlayerPicker.text = playersData.players.keys.first!
-        textCompetitionPicker.text = teamTournaments.first!
-        textSeasonPicker.text = seasons.first!
-        
+    }
+    
+    func updateTournamentUI(_ tournamentData: TournamentData) {
+        playerTournaments = tournamentData.tournaments
+        textCompetitionPicker.text = tournamentData.tournaments.first!
+    }
+    
+    func updateSeasonUI(_ seasonData: SeasonData) {
+        playerSeasons = seasonData.seasons
+        textSeasonPicker.text = seasonData.seasons.first!
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +90,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         goButton.layer.cornerRadius = 10
     }
     
-    func checkReachability(){
+    func checkReachability() {
         if currentReachabilityStatus == .notReachable {
             let alert = UIAlertController(title: "", message: "Check Internet connection", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{ (action) in alert.dismiss(animated: true, completion: nil)
@@ -90,22 +109,22 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         if pickerView == playerPicker {
             numOfRows = teamPlayers.count
         } else if pickerView == competitionPicker {
-            numOfRows = teamTournaments.count
+            numOfRows = playerTournaments.count
         } else if pickerView == seasonPicker {
-            numOfRows = seasons.count
+            numOfRows = playerSeasons.count
         }
         return numOfRows
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var titForRow = ""
         let names = [String](teamPlayers.keys)
+        var titForRow = ""
         if pickerView == playerPicker {
             titForRow = names[row]
         } else if pickerView == competitionPicker {
-            titForRow = teamTournaments[row]
+            titForRow = playerTournaments[row]
         } else if pickerView == seasonPicker {
-            titForRow = seasons[row]
+            titForRow = playerSeasons[row]
         }
         return titForRow
     }
@@ -117,17 +136,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             textPlayerPicker.text = names[indexPlayer]
         } else if pickerView == competitionPicker {
             indexCompetition = row
-            textCompetitionPicker.text = teamTournaments[indexCompetition]
+            textCompetitionPicker.text = playerTournaments[indexCompetition]
         } else if pickerView == seasonPicker {
             indexSeason = row
-            textSeasonPicker.text = seasons[indexSeason]
+            textSeasonPicker.text = playerSeasons[indexSeason]
         }
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard currentReachabilityStatus != .notReachable else { return }
         let names = [String](teamPlayers.keys)
-        
         let resultDestination = segue.destination as? ResultViewController
         resultDestination?.imageName = teamPlayers[names[indexPlayer]]
         
@@ -135,21 +154,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             resultDestination?.playerID = playerID
         }
         
-        if let tournamentID = tournaments[teamTournaments[indexCompetition]+seasons[indexSeason]] {
-            resultDestination?.tournamentID = tournamentID
-        }
+        let tournamentName = playerTournaments[indexCompetition]
+            resultDestination?.tournamentName = tournamentName
+        
+        
+        let chosenSeason = playerSeasons[indexSeason] 
+            resultDestination?.chosenSeason = chosenSeason
+        
         
     }
 
 
 }
-
-
-
-
-
-
-
-
-
-

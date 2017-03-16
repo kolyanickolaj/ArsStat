@@ -5,26 +5,26 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "B00BC731A4571B1CFE2F2799F5411878DABA5C8E" : 9223372036854775807,
-    "BE6F11D2B0F7EBDD3A2A4B2F7B7F7393B556F9B2" : 9223372036854775807
+    "2D395E312C3EE5201C62ECE2F5E2B7A530F3295B" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3FCFA4C0-E978-47D4-9B14-0B4867FE050D",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "B00BC731A4571B1CFE2F2799F5411878DABA5C8E" : "git\/",
-    "BE6F11D2B0F7EBDD3A2A4B2F7B7F7393B556F9B2" : "..\/reachability"
+    "2D395E312C3EE5201C62ECE2F5E2B7A530F3295B" : "..\/reachability"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "ArsStat",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ArsStat.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ashleymills\/Reachability.swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2D395E312C3EE5201C62ECE2F5E2B7A530F3295B"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kolyanickolaj\/ArsStat.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B00BC731A4571B1CFE2F2799F5411878DABA5C8E"
-    },
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ashleymills\/Reachability.swift.git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BE6F11D2B0F7EBDD3A2A4B2F7B7F7393B556F9B2"
     }
   ]
 }

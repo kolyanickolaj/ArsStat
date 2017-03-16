@@ -36,6 +36,7 @@
                                 </constraints>
                                 <state key="normal" title="GO!"/>
                                 <connections>
+                                    <action selector="checkInternetConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oqa-nK-vTk"/>
                                     <segue destination="FmH-92-fg4" kind="show" id="gvV-P4-Vei"/>
                                 </connections>
                             </button>
@@ -50,6 +51,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didChangePlayer:" destination="BYZ-38-t0r" eventType="valueChanged" id="Fot-Qp-5lk"/>
+                                            <action selector="didChangePlayer:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="OOo-VV-896"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0QI-Gr-OCW">
                                         <rect key="frame" x="0.0" y="71" width="200" height="21"/>
@@ -60,6 +65,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didChangeTournament:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="RSo-9j-JvH"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y9C-ax-JzU">
                                         <rect key="frame" x="0.0" y="142" width="200" height="21"/>

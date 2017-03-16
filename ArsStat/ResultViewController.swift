@@ -5,7 +5,8 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     
     var imageName:String!
     var playerID:String!
-    var tournamentID:String!
+    var tournamentName:String!
+    var chosenSeason:String!
     
     let parameters = ["Matches played", "Goals", "Assists", "Yellow cards", "Red cards"]
     
@@ -52,7 +53,7 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         weightLabel.text = "Weight:"
         weightValueLabel.text = "0"
         
-        DataDownloader.sharedInstance.fetchData(player: playerID, tournamentID: tournamentID, completion: {(statData) in
+        DataDownloader.sharedInstance.fetchData(player: playerID, tournamentName: tournamentName, chosenSeason: chosenSeason, completion: {(statData) in
             self.updateUI(statData) } )
     }
     
