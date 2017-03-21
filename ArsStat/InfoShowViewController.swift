@@ -19,9 +19,10 @@ class InfoShowViewController: UIViewController {
     @IBAction func changeLanguage(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             infoLabel.text = engInfoText
+            infoLabel.font = infoLabel.font.withSize(17)
         } else {
             infoLabel.text = rusInfoText
-            infoLabel.font = infoLabel.font.withSize(14)
+            infoLabel.font = infoLabel.font.withSize(15)
         }
     }
     

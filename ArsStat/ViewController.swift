@@ -41,16 +41,19 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         playerPicker.delegate = self
         textPlayerPicker.inputView = playerPicker
         textPlayerPicker.text = "Player"
+        textPlayerPicker.tintColor = .clear
         
         competitionPicker.dataSource = self
         competitionPicker.delegate = self
         textCompetitionPicker.inputView = competitionPicker
         textCompetitionPicker.text = "Tournament"
+        textCompetitionPicker.tintColor = .clear
 
         seasonPicker.dataSource = self
         seasonPicker.delegate = self
         textSeasonPicker.inputView = seasonPicker
         textSeasonPicker.text = "Season"
+        textSeasonPicker.tintColor = .clear
         
         DataDownloader.sharedInstance.fetchPlayers(completion: {(PlayersData) in self.updateUI(PlayersData) } )
     }
